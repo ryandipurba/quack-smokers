@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Countdown from "react-countdown";
@@ -167,26 +168,60 @@ const Home = (props: HomeProps) => {
 
   return (
     <main>
-      {wallet && (
+      {/* {wallet && (
         <p>Wallet {shortenAddress(wallet.publicKey.toBase58() || "")}</p>
-      )}
+      )} */}
 
-      {wallet && <p>Balance: {(balance || 0).toLocaleString()} SOL</p>}
+      {/* {wallet && <p>Balance: {(balance || 0).toLocaleString()} SOL</p>} */}
 
-      {wallet && <p>Total Available: {itemsAvailable}</p>}
-
+      {/* {wallet && (
+        <h3>
+          {itemsRedeemed} / {itemsAvailable} Minted
+        </h3>
+      )} */}
+      {/* 
       {wallet && <p>Redeemed: {itemsRedeemed}</p>}
 
-      {wallet && <p>Remaining: {itemsRemaining}</p>}
+      {wallet && <p>Remaining: {itemsRemaining}</p>} */}
 
       <MintContainer>
         {!wallet ? (
-          <ConnectButton>Connect Wallet</ConnectButton>
+          <>
+            <p
+              style={{
+                fontWeight: "bold",
+                textShadow: "1px 1px black",
+                letterSpacing: "2px",
+                color: "#db6433;",
+              }}
+            >
+              Please Connect Wallet to Mint
+            </p>
+            <ConnectButton
+              style={{
+                backgroundColor: "#43beeb",
+                fontSize: "20px",
+                fontFamily: "Pixeboy, sans-serif",
+                minWidth: "150px",
+                justifyContent: "center",
+              }}
+            >
+              Connect Wallet
+            </ConnectButton>
+          </>
         ) : (
           <MintButton
             disabled={isSoldOut || isMinting || !isActive}
             onClick={onMint}
             variant="contained"
+            style={{
+              backgroundColor: "#43beeb",
+              fontSize: "20px",
+              fontFamily: "Pixeboy, sans-serif",
+              minWidth: "150px",
+              color: "white",
+              justifyContent: "center",
+            }}
           >
             {isSoldOut ? (
               "SOLD OUT"
